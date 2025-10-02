@@ -180,10 +180,10 @@
                   <span class="out-of-stock">Agotado</span>
                 {%- endif -%}
               </li>
-              {% comment %} <li><strong>Tipo:</strong> {{ product.type | default: 'N/A' }}</li> {% endcomment %}
-              {% comment %} {%- if product.tags.size > 0 -%}
+              <li><strong>Tipo:</strong> {{ product.type | default: 'N/A' }}</li>
+              {%- if product.tags.size > 0 -%}
                 <li><strong>Tags:</strong> {{ product.tags | join: ', ' }}</li>
-              {%- endif -%} {% endcomment %}
+              {%- endif -%}
             </ul>
           </div>
 
@@ -575,52 +575,70 @@
 </style>
 
 <script>
-  // Quantity selector functionality
-  document.querySelectorAll('.qty-btn.plus').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const input = this.previousElementSibling;
-      input.value = parseInt(input.value) + 1;
-    });
-  });
+(function() {
+  const sectionId = '{{ section.id }}';
+  const section = document.querySelector(`[data-section-id="${sectionId}"]`);
+  
+  if (!section) return;
 
-  document.querySelectorAll('.qty-btn.minus').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const input = this.nextElementSibling;
-      if (parseInt(input.value) > 1) {
-        input.value = parseInt(input.value) - 1;
+  // Quantity selector functionality - scoped to this section only
+  const plusBtn = section.querySelector('.qty-btn.plus');
+  const minusBtn = section.querySelector('.qty-btn.minus');
+  const qtyInput = section.querySelector('.qty-input');
+
+  if (plusBtn && qtyInput) {
+    plusBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      qtyInput.value = parseInt(qtyInput.value) + 1;
+    });
+  }
+
+  if (minusBtn && qtyInput) {
+    minusBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (parseInt(qtyInput.value) > 1) {
+        qtyInput.value = parseInt(qtyInput.value) - 1;
+      }
+    });
+  }
+
+  // Thumbnail image switching - scoped to this section
+  section.querySelectorAll('.thumbnail').forEach(thumb => {
+    thumb.addEventListener('click', function() {
+      section.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      
+      const imgSrc = this.querySelector('img').src.replace('_150x', '_800x');
+      const featuredImg = section.querySelector('.featured-img');
+      if (featuredImg) {
+        featuredImg.src = imgSrc;
       }
     });
   });
 
-  // Thumbnail image switching
-  document.querySelectorAll('.thumbnail').forEach(thumb => {
-    thumb.addEventListener('click', function() {
-      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
-      
-      const imgSrc = this.querySelector('img').src.replace('_150x', '_800x');
-      document.querySelector('.featured-img').src = imgSrc;
-    });
-  });
-
-  // Player button selection
-  document.querySelectorAll('.player-btn').forEach(btn => {
+  // Player button selection - scoped to this section
+  section.querySelectorAll('.player-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-      document.querySelectorAll('.player-btn').forEach(b => b.classList.remove('active'));
+      section.querySelectorAll('.player-btn').forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       
       const selectedValue = this.closest('.product-option').querySelector('.selected-value');
-      selectedValue.textContent = this.dataset.player;
+      if (selectedValue) {
+        selectedValue.textContent = this.dataset.player;
+      }
     });
   });
 
-  // Update selected option value display
-  document.querySelectorAll('.option-values input[type="radio"]').forEach(radio => {
+  // Update selected option value display - scoped to this section
+  section.querySelectorAll('.option-values input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', function() {
       const selectedValue = this.closest('.product-option').querySelector('.selected-value');
-      selectedValue.textContent = this.value;
+      if (selectedValue) {
+        selectedValue.textContent = this.value;
+      }
     });
   });
+})();
 </script>
 
 {% schema %}
