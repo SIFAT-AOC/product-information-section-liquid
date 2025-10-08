@@ -24,7 +24,7 @@
         display: flex !important;
         align-items: flex-start !important;
         justify-content: space-between !important;
-        padding: 35px 0 !important;
+        padding: 0px 0 35px 0 !important;
         min-height: 100px !important;
     }
 
@@ -52,7 +52,7 @@
         left: 50% !important;
         transform: translateX(-50%) !important;
         top: 10px !important;
-        z-index: 999 !important;
+        z-index: 2 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -119,6 +119,30 @@
         padding: 20px !important;
         background-color: rgba(229, 243, 234, 0.4) !important;
         margin-top: 10px !important;
+        position: relative !important;
+    }
+
+    /* Arrow styles for desktop */
+    .moringa-content-box::after {
+        position: absolute !important;
+        content: "" !important;
+        top: 22px !important;
+        border-top: 13px solid transparent !important;
+        border-bottom: 13px solid transparent !important;
+    }
+
+    .moringa-timeline-left .moringa-content-box::after {
+        left: auto !important;
+        right: -15px !important;
+        border-right: none !important;
+        border-left: 13px solid #145d4b !important;
+    }
+
+    .moringa-timeline-right .moringa-content-box::after {
+        left: -15px !important;
+        right: auto !important;
+        border-left: none !important;
+        border-right: 13px solid #145d4b !important;
     }
 
     .moringa-content-text {
@@ -127,13 +151,25 @@
         line-height: 1.5 !important;
     }
 
+    /* Mobile heading - hidden on desktop */
+    .moringa-week-heading-mobile {
+        display: none !important;
+    }
+
+    /* Desktop heading - visible on desktop */
+    .moringa-week-heading-desktop {
+        display: flex !important;
+    }
+
     /* Mobile Styles */
     @media screen and (max-width: 767px) {
         .moringa-timeline-item {
             flex-direction: column !important;
-            padding: 25px 0 25px 50px !important;
+            padding: 0px 0 25px 50px !important;
         }
-
+    .moringa-timeline-wrapper {
+        padding:0px !important;
+    }
         .moringa-timeline-item::after {
             left: 14px !important;
             margin: 0 !important;
@@ -168,8 +204,16 @@
             display: none !important;
         }
 
-        .moringa-week-heading {
+        /* Hide desktop headings on mobile */
+        .moringa-week-heading-desktop {
+            display: none !important;
+        }
+
+        /* Show mobile headings */
+        .moringa-week-heading-mobile {
+            display: flex !important;
             justify-content: flex-start !important;
+            align-items: center !important;
             margin-bottom: 15px !important;
         }
 
@@ -184,6 +228,11 @@
 
         .moringa-content-text {
             font-size: 16px !important;
+        }
+
+        /* Remove arrows on mobile */
+        .moringa-content-box::after {
+            display: none !important;
         }
     }
 
@@ -208,7 +257,7 @@
             </div>
             <div class="moringa-timeline-spacer"></div>
             <div class="moringa-timeline-left">
-                <div class="moringa-week-heading">
+                <div class="moringa-week-heading moringa-week-heading-desktop">
                     <div class="moringa-calendar-icon">
                         <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
                     </div>
@@ -216,6 +265,12 @@
                 </div>
             </div>
             <div class="moringa-timeline-right">
+                <div class="moringa-week-heading moringa-week-heading-mobile">
+                    <div class="moringa-calendar-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
+                    </div>
+                    <div class="moringa-week-title">1 Week</div>
+                </div>
                 <div class="moringa-content-box">
                     <p class="moringa-content-text">You may begin to notice subtle changes in energy and digestion as your body starts absorbing plant-based nutrients like iron, magnesium, and B vitamins.</p>
                 </div>
@@ -229,12 +284,18 @@
             </div>
             <div class="moringa-timeline-spacer"></div>
             <div class="moringa-timeline-left">
+                <div class="moringa-week-heading moringa-week-heading-mobile">
+                    <div class="moringa-calendar-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
+                    </div>
+                    <div class="moringa-week-title">1 Month</div>
+                </div>
                 <div class="moringa-content-box">
                     <p class="moringa-content-text">Many customers report feeling more steady energy and mental clarity over the course of the first month, especially when taking Rosabella Moringa consistently each day.</p>
                 </div>
             </div>
             <div class="moringa-timeline-right">
-                <div class="moringa-week-heading align-start">
+                <div class="moringa-week-heading align-start moringa-week-heading-desktop">
                     <div class="moringa-calendar-icon">
                         <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
                     </div>
@@ -250,7 +311,7 @@
             </div>
             <div class="moringa-timeline-spacer"></div>
             <div class="moringa-timeline-left">
-                <div class="moringa-week-heading">
+                <div class="moringa-week-heading moringa-week-heading-desktop">
                     <div class="moringa-calendar-icon">
                         <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
                     </div>
@@ -258,6 +319,12 @@
                 </div>
             </div>
             <div class="moringa-timeline-right">
+                <div class="moringa-week-heading moringa-week-heading-mobile">
+                    <div class="moringa-calendar-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
+                    </div>
+                    <div class="moringa-week-title">2 Months</div>
+                </div>
                 <div class="moringa-content-box">
                     <p class="moringa-content-text">Key nutrients like B vitamins, iron, and antioxidants may help support focus, immune health, and resilience to everyday fatigue when combined with a healthy lifestyle.</p>
                 </div>
@@ -271,14 +338,20 @@
             </div>
             <div class="moringa-timeline-spacer"></div>
             <div class="moringa-timeline-left">
+                <div class="moringa-week-heading moringa-week-heading-mobile">
+                    <div class="moringa-calendar-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
+                    </div>
+                    <div class="moringa-week-title">3 Months</div>
+                </div>
                 <div class="moringa-content-box">
                     <p class="moringa-content-text">Over time, consistent nutrient intake may support natural energy metabolism, stamina, and overall recovery from daily activity.</p>
                 </div>
             </div>
             <div class="moringa-timeline-right">
-                <div class="moringa-week-heading align-start">
+                <div class="moringa-week-heading align-start moringa-week-heading-desktop">
                     <div class="moringa-calendar-icon">
-                        <img src="//img.funnelish.com/55043/562602/1730128921-Mini%20Calendar.webp" alt="Calendar Icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
                     </div>
                     <div class="moringa-week-title">3 Months</div>
                 </div>
@@ -292,14 +365,20 @@
             </div>
             <div class="moringa-timeline-spacer"></div>
             <div class="moringa-timeline-left">
-                <div class="moringa-week-heading">
+                <div class="moringa-week-heading moringa-week-heading-desktop">
                     <div class="moringa-calendar-icon">
-                        <img src="//img.funnelish.com/55043/562602/1730128921-Mini%20Calendar.webp" alt="Calendar Icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
                     </div>
                     <div class="moringa-week-title">6 Months</div>
                 </div>
             </div>
             <div class="moringa-timeline-right">
+                <div class="moringa-week-heading moringa-week-heading-mobile">
+                    <div class="moringa-calendar-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
+                    </div>
+                    <div class="moringa-week-title">6 Months</div>
+                </div>
                 <div class="moringa-content-box">
                     <p class="moringa-content-text">Some users report better stress response, improved sleep quality, and more balanced energy after regular use over several months.</p>
                 </div>
@@ -313,14 +392,20 @@
             </div>
             <div class="moringa-timeline-spacer"></div>
             <div class="moringa-timeline-left">
+                <div class="moringa-week-heading moringa-week-heading-mobile">
+                    <div class="moringa-calendar-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
+                    </div>
+                    <div class="moringa-week-title">12 Months</div>
+                </div>
                 <div class="moringa-content-box">
                     <p class="moringa-content-text">With consistent use, Rosabella Moringa can be part of your long-term wellness routine—supporting daily vitality, focus, and nutrient diversity alongside a healthy diet and lifestyle.</p>
                 </div>
             </div>
             <div class="moringa-timeline-right">
-                <div class="moringa-week-heading align-start">
+                <div class="moringa-week-heading align-start moringa-week-heading-desktop">
                     <div class="moringa-calendar-icon">
-                        <img src="//img.funnelish.com/55043/562602/1730128921-Mini%20Calendar.webp" alt="Calendar Icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0942/3418/1936/files/1730128921-Mini_Calendar.webp?v=1759946600" alt="Calendar Icon">
                     </div>
                     <div class="moringa-week-title">12 Months</div>
                 </div>
