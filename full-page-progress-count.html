@@ -1,0 +1,73 @@
+<div class="progress-circle-container">
+    <div class="percent" id="progressPercent">0%</div>
+    <svg class="progress-circle-background" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+    </svg>
+    <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+        <path id="progressPath" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+    </svg>
+</div>
+
+<style>
+.progress-circle-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-circle-container svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-circle-container path {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.progress-circle-background path {
+    stroke: #e5e7eb;
+}
+
+.progress-circle path {
+    stroke: #2563eb;
+    transition: stroke-dashoffset 300ms linear;
+}
+
+.percent {
+    position: absolute;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2563eb;
+    z-index: 10;
+}
+</style>
+
+<script>
+const progressPercent = document.getElementById('progressPercent');
+const progressPath = document.getElementById('progressPath');
+const circumference = 307.919;
+
+function updateScrollProgress() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+    const scrolled = window.scrollY;
+    const scrollPercent = Math.min((scrolled / documentHeight) * 100, 100);
+    
+    const roundedPercent = Math.round(scrollPercent);
+    
+    progressPercent.textContent = roundedPercent + '%';
+    
+    const offset = circumference - (roundedPercent / 100) * circumference;
+    progressPath.style.strokeDasharray = circumference;
+    progressPath.style.strokeDashoffset = offset;
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+updateScrollProgress();
+</script>
