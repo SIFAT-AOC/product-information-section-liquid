@@ -1,0 +1,305 @@
+{% schema %}
+{
+  "name": "Doctors Testimonial",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Designed by Experts,"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading Bold Text",
+      "default": "Recommended By Doctors"
+    },
+    {
+      "type": "richtext",
+      "id": "testimonial_text",
+      "label": "Testimonial Text"
+    },
+    {
+      "type": "text",
+      "id": "doctor_name",
+      "label": "Doctor Name",
+      "default": "Dr. Blane Schilling"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "range",
+      "id": "left_column_width",
+      "label": "Left Column Width (%)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "right_column_width",
+      "label": "Right Column Width (%)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding Top",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding Bottom",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "label": "Gap Between Columns",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Doctors Testimonial"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .doctors-section {
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .doctors-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: {{ section.settings.left_column_width }}% {{ section.settings.right_column_width }}%;
+    gap: {{ section.settings.columns_gap }}px;
+    align-items: center;
+  }
+
+  .doctors-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .doctors-left h2 {
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .doctors-left h2 strong {
+    font-weight: 700;
+    display: block;
+  }
+
+  .doctors-testimonial {
+    font-size: 16px;
+    line-height: 1.7;
+    color: {{ section.settings.text_color }};
+    margin-top: 30px;
+    margin-bottom: 25px;
+  }
+
+  .doctors-author {
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .doctors-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .doctors-image-wrapper {
+    width: 100%;
+  }
+
+  .doctors-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Tablet (768px - 1024px) */
+  @media (max-width: 1024px) {
+    .doctors-section {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .doctors-wrapper {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .doctors-left h2 {
+      font-size: 40px;
+    }
+
+    .doctors-testimonial {
+      font-size: 15px;
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+  }
+
+  /* Mobile (480px - 767px) */
+  @media (max-width: 767px) {
+    .doctors-section {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .doctors-wrapper {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .doctors-left h2 {
+      font-size: 28px;
+    }
+
+    .doctors-testimonial {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    .doctors-author {
+      font-size: 14px;
+    }
+
+    .doctors-image-wrapper {
+      width: 100%;
+    }
+  }
+
+  /* Small Mobile (up to 479px) */
+  @media (max-width: 479px) {
+    .doctors-section {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .doctors-left h2 {
+      font-size: 24px;
+    }
+
+    .doctors-testimonial {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 18px;
+      margin-bottom: 12px;
+    }
+
+    .doctors-image-wrapper {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="doctors-section">
+  <div class="doctors-wrapper">
+    <!-- Left Side - Text Content -->
+    <div class="doctors-left">
+      <h2>
+        {{ section.settings.heading }}<strong>{{ section.settings.heading_bold }}</strong>
+      </h2>
+      
+      <div class="doctors-testimonial">
+        {{ section.settings.testimonial_text }}
+      </div>
+      
+      <div class="doctors-author">
+        {{ section.settings.doctor_name }}
+      </div>
+    </div>
+
+    <!-- Right Side - Image -->
+    <div class="doctors-right">
+      <div class="doctors-image-wrapper">
+        {% if section.settings.section_image %}
+          <img 
+            src="{{ section.settings.section_image | image_url: width: 600 }}" 
+            alt="{{ section.settings.doctor_name }}" 
+            class="doctors-image"
+            srcset="
+              {{ section.settings.section_image | image_url: width: 300 }} 300w,
+              {{ section.settings.section_image | image_url: width: 400 }} 400w,
+              {{ section.settings.section_image | image_url: width: 500 }} 500w,
+              {{ section.settings.section_image | image_url: width: 600 }} 600w,
+              {{ section.settings.section_image | image_url: width: 800 }} 800w"
+            sizes="(max-width: 479px) 100vw, (max-width: 767px) 100vw, (max-width: 1024px) 50vw, 50vw"
+          >
+        {% else %}
+          <div style="width: 100%; height: 400px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999;">
+            Image placeholder
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
