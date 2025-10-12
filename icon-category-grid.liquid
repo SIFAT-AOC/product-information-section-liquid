@@ -1,0 +1,454 @@
+{% schema %}
+{
+  "name": "Category Grid",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Box Background Color",
+      "default": "#c8f7dc"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "hover_bg_color",
+      "label": "Hover Background Color",
+      "default": "#a8f0d0"
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "hover_icon_color",
+      "label": "Hover Icon Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Box Gap (px)",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius (px)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Size (px)",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Box Padding (px)",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Desktop Columns",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "tablet_columns",
+      "label": "Tablet Columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns",
+      "label": "Mobile Columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding",
+      "label": "Desktop Box Padding (px)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "desktop_gap",
+      "label": "Desktop Gap (px)",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin",
+      "label": "Desktop Container Margin (px)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Tablet Spacing"
+    },
+    {
+      "type": "range",
+      "id": "tablet_padding",
+      "label": "Tablet Box Padding (px)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tablet_gap",
+      "label": "Tablet Gap (px)",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tablet_margin",
+      "label": "Tablet Container Margin (px)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding",
+      "label": "Mobile Box Padding (px)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Mobile Gap (px)",
+      "min": 6,
+      "max": 24,
+      "step": 2,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin",
+      "label": "Mobile Container Margin (px)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_item",
+      "name": "Category Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon",
+          "default": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Image URL (Alternative to SVG)",
+          "info": "Leave empty to use SVG. Add image URL to replace SVG."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Grid",
+      "blocks": [
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Trending"
+          }
+        },
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Gadget"
+          }
+        },
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Books"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .category-grid-container {
+    width: 100%;
+    padding: 20px 0;
+    margin: {{ section.settings.desktop_margin }}px;
+    padding-left: {{ section.settings.desktop_margin }}px;
+    padding-right: {{ section.settings.desktop_margin }}px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+    gap: {{ section.settings.desktop_gap }}px;
+    width: 100%;
+  }
+
+  .category-item-link {
+    text-decoration: none;
+  }
+
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: {{ section.settings.desktop_padding }}px;
+    background-color: {{ section.settings.bg_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    min-height: 160px;
+  }
+
+  .category-item:hover {
+    background-color: {{ section.settings.hover_bg_color }};
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-item:hover .category-icon svg {
+    fill: {{ section.settings.hover_icon_color }};
+    stroke: {{ section.settings.hover_icon_color }};
+  }
+
+  .category-item:hover .category-icon img {
+    opacity: 0.9;
+    filter: brightness(1.1);
+  }
+
+  .category-item:hover .category-title {
+    color: {{ section.settings.hover_text_color }};
+  }
+
+  .category-icon {
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .category-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: {{ section.settings.icon_color }};
+    stroke: {{ section.settings.icon_color }};
+    transition: all 0.3s ease;
+  }
+
+  .category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+  }
+
+  .category-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    transition: all 0.3s ease;
+    word-break: break-word;
+    line-height: 1.3;
+  }
+
+  /* Tablet: 769px to 1024px */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .category-grid-container {
+      margin: {{ section.settings.tablet_margin }}px;
+      padding-left: {{ section.settings.tablet_margin }}px;
+      padding-right: {{ section.settings.tablet_margin }}px;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat({{ section.settings.tablet_columns }}, 1fr);
+      gap: {{ section.settings.tablet_gap }}px;
+    }
+
+    .category-item {
+      padding: {{ section.settings.tablet_padding }}px;
+      min-height: 140px;
+      gap: 8px;
+    }
+
+    .category-icon {
+      width: calc({{ section.settings.icon_size }}px * 0.8);
+      height: calc({{ section.settings.icon_size }}px * 0.8);
+    }
+
+    .category-title {
+      font-size: 12px;
+    }
+  }
+
+  /* Mobile: Below 768px */
+  @media (max-width: 768px) {
+    .category-grid-container {
+      margin: {{ section.settings.mobile_margin }}px;
+      padding-left: {{ section.settings.mobile_margin }}px;
+      padding-right: {{ section.settings.mobile_margin }}px;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat({{ section.settings.mobile_columns }}, 1fr);
+      gap: {{ section.settings.mobile_gap }}px;
+    }
+
+    .category-item {
+      padding: {{ section.settings.mobile_padding }}px;
+      min-height: 140px;
+      gap: 8px;
+    }
+
+    .category-icon {
+      width: calc({{ section.settings.icon_size }}px * 0.8);
+      height: calc({{ section.settings.icon_size }}px * 0.8);
+    }
+
+    .category-title {
+      font-size: 12px;
+    }
+  }
+
+  /* Small Mobile: Below 480px */
+  @media (max-width: 480px) {
+    .category-grid-container {
+      margin: {{ section.settings.mobile_margin }}px;
+      padding-left: {{ section.settings.mobile_margin }}px;
+      padding-right: {{ section.settings.mobile_margin }}px;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat({{ section.settings.mobile_columns }}, 1fr);
+      gap: {{ section.settings.mobile_gap }}px;
+    }
+
+    .category-item {
+      padding: calc({{ section.settings.padding }}px * 0.6);
+      min-height: 120px;
+      gap: 6px;
+    }
+
+    .category-icon {
+      width: calc({{ section.settings.icon_size }}px * 0.65);
+      height: calc({{ section.settings.icon_size }}px * 0.65);
+    }
+
+    .category-title {
+      font-size: 11px;
+    }
+  }
+</style>
+
+<div class="category-grid-container">
+  <div class="category-grid">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="category-item-link">
+        <div class="category-item">
+          <div class="category-icon">
+            {% if block.settings.image_url != blank %}
+              <img 
+                loading="lazy"
+                src="{{ block.settings.image_url }}" 
+                alt="{{ block.settings.title }}"
+              >
+            {% else %}
+              {{ block.settings.svg_icon }}
+            {% endif %}
+          </div>
+          <h3 class="category-title">{{ block.settings.title }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
