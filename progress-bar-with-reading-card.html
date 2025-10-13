@@ -1,0 +1,276 @@
+<div class="learning-card-wrapper-unique">
+    <div class="learning-card-unique">
+        <div class="card-header-unique">
+            <h2>What You Will Learn:</h2>
+        </div>
+        
+        <div class="progress-section-unique">
+            <div class="progress-circle-container-unique">
+                <div class="percent-unique" id="progressPercent-unique">0%</div>
+                <svg class="progress-circle-background-unique" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+                </svg>
+                <svg class="progress-circle-unique" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                    <path id="progressPath-unique" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+                </svg>
+            </div>
+            <div class="read-time-unique">
+                <div class="read-time-label-unique">Estimated<br>Read Time</div>
+                <div class="read-time-value-unique"><span class="read-time-number-unique">5</span> Minutes</div>
+            </div>
+        </div>
+
+        <div class="card-body-unique">
+            <div class="list-item-unique">
+                <div class="icon-unique icon-check-unique"></div>
+                <div class="list-item-text-unique">Benefits of a Quality Lion's Mane</div>
+            </div>
+            <div class="list-item-unique">
+                <div class="icon-unique icon-check-unique"></div>
+                <div class="list-item-text-unique">What To Look For In A Lion's Mane Supplement</div>
+            </div>
+            <div class="list-item-unique">
+                <div class="icon-unique icon-cross-unique"></div>
+                <div class="list-item-text-unique">What Ingredients To Avoid</div>
+            </div>
+            <div class="list-item-unique">
+                <div class="icon-unique icon-check-unique"></div>
+                <div class="list-item-text-unique">Top 5 Lion's Mane Supplements</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.learning-card-wrapper-unique {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.learning-card-unique {
+    width: 280px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+.learning-card-unique .card-header-unique {
+    background: linear-gradient(135deg, #5B8FD8 0%, #4A7BC8 100%);
+    color: white;
+    padding: 16px 20px;
+    text-align: center;
+}
+
+.learning-card-unique .card-header-unique h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.learning-card-unique .progress-section-unique {
+    padding: 24px 20px;
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.learning-card-unique .progress-circle-container-unique {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+}
+
+.learning-card-unique .progress-circle-container-unique svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    overflow:visible;
+}
+
+.learning-card-unique .progress-circle-container-unique path {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.learning-card-unique .progress-circle-background-unique path {
+    stroke: #E5E7EB;
+}
+
+.learning-card-unique .progress-circle-unique path {
+    stroke: #5B8FD8;
+    transition: stroke-dashoffset 300ms linear;
+}
+
+.learning-card-unique .percent-unique {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    font-weight: 700;
+    color: #5B8FD8;
+    z-index: 10;
+}
+
+.learning-card-unique .read-time-unique {
+    flex: 1;
+    text-align: left;
+}
+
+.learning-card-unique .read-time-label-unique {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.learning-card-unique .read-time-value-unique {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.3;
+}
+
+.learning-card-unique .read-time-number-unique {
+    font-weight: 700;
+    font-size: 22px;
+    color: #333;
+}
+
+.learning-card-unique .card-body-unique {
+    padding: 0;
+}
+
+.learning-card-unique .list-item-unique {
+    display: flex;
+    align-items: flex-start;
+    padding: 14px 20px;
+    border-top: 1px solid #E8E8E8;
+    gap: 12px;
+    transition: background-color 0.2s;
+}
+
+.learning-card-unique .list-item-unique:hover {
+    background-color: #F9FAFB;
+}
+
+.learning-card-unique .icon-unique {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.learning-card-unique .icon-check-unique {
+    background: #E8F5E9;
+    color: #4CAF50;
+}
+
+.learning-card-unique .icon-check-unique::before {
+    content: '✓';
+}
+
+.learning-card-unique .icon-cross-unique {
+    background: #FFEBEE;
+    color: #F44336;
+}
+
+.learning-card-unique .icon-cross-unique::before {
+    content: '✕';
+}
+
+.learning-card-unique .list-item-text-unique {
+    flex: 1;
+    font-size: 13px;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-align: start;
+    font-weight: 700;
+}
+
+.learning-card-unique .list-item-text-unique:hover {
+    color: #5B8FD8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .learning-card-wrapper-unique {
+        position: static;
+        margin: 20px auto;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 360px) {
+    .learning-card-unique {
+        width: calc(100vw - 40px);
+        min-width: 260px;
+    }
+}
+</style>
+
+<script>
+(function() {
+    const progressPercent = document.getElementById('progressPercent-unique');
+    const progressPath = document.getElementById('progressPath-unique');
+    const circumference = 307.919;
+
+    function updateScrollProgress() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        
+        if (documentHeight <= 0) {
+            progressPercent.textContent = '0%';
+            progressPath.style.strokeDasharray = circumference;
+            progressPath.style.strokeDashoffset = circumference;
+            return;
+        }
+        
+        const scrollPercent = Math.min((scrolled / documentHeight) * 100, 100);
+        const roundedPercent = Math.round(scrollPercent);
+        
+        progressPercent.textContent = roundedPercent + '%';
+        
+        const offset = circumference - (roundedPercent / 100) * circumference;
+        progressPath.style.strokeDasharray = circumference;
+        progressPath.style.strokeDashoffset = offset;
+    }
+
+    // Initialize on load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateScrollProgress);
+    } else {
+        updateScrollProgress();
+    }
+
+    // Update on scroll and resize
+    window.addEventListener('scroll', updateScrollProgress);
+    window.addEventListener('resize', updateScrollProgress);
+    
+    // Update after a short delay to ensure page is fully loaded
+    setTimeout(updateScrollProgress, 100);
+})();
+</script>
