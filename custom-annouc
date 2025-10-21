@@ -1,0 +1,645 @@
+{% comment %}
+  Announcement Bar Section
+  - Matches exact structure from the provided HTML
+  - Fully customizable from theme settings
+  - Responsive design for desktop and mobile
+  - STICKY positioning for always visible bar
+{% endcomment %}
+
+{%- style -%}
+  /* Alternative: Fixed positioning for guaranteed sticky behavior */
+  .sticky-headers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Add padding to body to prevent content from hiding behind fixed header */
+  body.has-sticky-announcement {
+    padding-top: var(--announcement-bar-height, 80px);
+  }
+  
+  .nav-new {
+    width: 100%;
+  }
+  
+  .nav-red-new {
+    background-color: {{ section.settings.top_bar_background }};
+    color: {{ section.settings.top_bar_text_color }};
+    text-align: center;
+    /* padding: 10px 20px; */
+    width: 100%;
+  }
+  
+  .nav-red-new p {
+    margin: 0;
+    font-weight: {{ section.settings.font_weight }};
+    font-size: {{ section.settings.font_size }}px;
+  }
+  
+  .nav-main-new {
+    background-color: {{ section.settings.bottom_bar_background }};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .main-nav-block1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-new-h {
+    color: {{ section.settings.special_text_color }};
+    margin: 0;
+    font-weight: {{ section.settings.font_weight }};
+    font-size: {{ section.settings.font_size }}px;
+  }
+  
+  .main-nav-block2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nav-new-discount {
+    background-color: {{ section.settings.discount_background }};
+    color: {{ section.settings.discount_text_color }};
+    padding: 5px 15px;
+    border-radius: 10px;
+  }
+  
+  .nav-new-discount p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .nav-timer.hide {
+    display: none;
+  }
+  
+  .div-block-1168 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .holiday-clock {
+    display: flex;
+    align-items: center;
+  }
+  
+  .box-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 3px;
+    padding: 5px;
+    min-width: 40px;
+  }
+  
+  .box-5.hide {
+    display: none;
+  }
+  
+  .clock-number-4 {
+    font-size: 14px;
+    font-weight: bold;
+    line-height:normal;
+    color: #000;
+    
+    font-weight:900;
+  }
+  
+  .clock-label-2 {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    color: #000;
+    line-height:normal;
+    font-weight:900;
+  }
+  
+  .text-block-287 {
+    font-weight: bold;
+    margin: 0 2px;
+    color: {{ section.settings.timer_separator_color }};
+  }
+  
+  .text-block-287.hide {
+    display: none;
+  }
+  
+  .gift_image {
+    display: {% if section.settings.show_gift_image %}flex{% else %}none{% endif %};
+  }
+  
+  .lowest-price-check {
+    background-color: {{ section.settings.price_check_background }};
+    display: {% if section.settings.show_lowest_price %}flex{% else %}none{% endif %};
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    gap: 10px;
+  }
+  
+  .lowest-price-check p {
+    margin: 0;
+    color: {{ section.settings.price_check_text_color }};
+    font-size: {{ section.settings.lower_font_size }}px;
+  }
+  
+  .lowest-price-icon {
+    width: 20px;
+    height: auto;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .nav-red-new {
+      padding: 0px;
+    }
+      .nav-new-discount {
+    padding: 5px 10px;
+    border-radius: 7px;
+  }
+    .nav-red-new p {
+      font-size: {{ section.settings.mobile_font_size }}px;
+    }
+    
+    .nav-main-new {
+      padding: 6px 0px;
+      gap: 8px;
+    }
+    
+    .nav-new-h {
+      font-size: {{ section.settings.mobile_font_size }}px;
+    }
+    
+    .nav-new-discount p {
+      font-size: 11px;
+    }
+    
+    .box-5 {
+      min-width: 32px;
+      padding: 3px;
+    }
+    
+    .clock-number-4 {
+      font-size: 12px;
+    }
+    
+    .clock-label-2 {
+      font-size: 8px;
+    }
+    
+    .lowest-price-check p {
+      font-size: {{ section.settings.mobile_lower_font_size }}px;
+    }
+    
+    .lowest-price-icon {
+      width: 16px;
+    }
+  }
+{%- endstyle -%}
+
+{% if section.settings.show_announcement %}
+<div class="sticky-headers">
+  <div class="nav-new">
+    <div class="nav-red-new">
+      <p>{{ section.settings.top_bar_emoji_left }} {{ section.settings.top_bar_text }} {{ section.settings.top_bar_emoji_right }}</p>
+    </div>
+    
+    <div class="nav-main-new">
+      <div class="main-nav-block1">
+        <p class="nav-new-h">{{ section.settings.special_text }}</p>
+      </div>
+      
+      <div class="main-nav-block2">
+        <div class="nav-new-discount newyear">
+          <p>{{ section.settings.discount_text }}</p>
+        </div>
+        
+        <p class="nav-timer hide">02:00:00</p>
+        
+        <div class="div-block-1168 new">
+          <div id="js-clock" class="holiday-clock new">
+            {% if section.settings.show_days %}
+            <!-- <div class="box-5">
+              <div id="js-clock-days" class="clock-number-4">{{ section.settings.countdown_days | default: '02' }}</div>
+              <div class="clock-label-2">{{ section.settings.days_label }}</div>
+            </div>
+            <div class="text-block-287">:</div> -->
+            {% else %}
+            <div class="box-5 hide">
+              <div id="js-clock-days" class="clock-number-4">00</div>
+              <div class="clock-label-2">Days</div>
+            </div>
+            <div class="text-block-287 hide">:</div>
+            {% endif %}
+            
+            <div class="box-5 new">
+              <div id="js-clock-hours" class="clock-number-4">{{ section.settings.countdown_hours | default: '02' }}</div>
+              <div class="clock-label-2">{{ section.settings.hours_label }}</div>
+            </div>
+            <div class="text-block-287 new">:</div>
+            
+            <div class="box-5 new">
+              <div id="js-clock-minutes" class="clock-number-4">{{ section.settings.countdown_minutes | default: '20' }}</div>
+              <div class="clock-label-2">{{ section.settings.minutes_label }}</div>
+            </div>
+            <div class="text-block-287 new">:</div>
+            
+            <div class="box-5 new">
+              <div id="js-clock-seconds" class="clock-number-4">{{ section.settings.countdown_seconds | default: '07' }}</div>
+              <div class="clock-label-2">{{ section.settings.seconds_label }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% if section.settings.show_gift_image %}
+      <div class="gift_image is-active bar">
+        {% if section.settings.gift_image != blank %}
+          <img src="{{ section.settings.gift_image | img_url: '100x' }}" alt="Gift" loading="lazy" width="30" height="30">
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% if section.settings.show_lowest_price %}
+  <div class="lowest-price-check">
+    {% if section.settings.price_check_icon != blank %}
+      <img src="{{ section.settings.price_check_icon | img_url: '40x' }}" loading="lazy" alt="" class="lowest-price-icon">
+    {% endif %}
+    <p>{{ section.settings.price_check_text }}</p>
+  </div>
+  {% endif %}
+</div>
+
+{% if section.settings.enable_countdown_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle sticky announcement bar positioning
+    const stickyHeaders = document.querySelector('.sticky-headers');
+    if (stickyHeaders) {
+      // Add class to body for padding
+      document.body.classList.add('has-sticky-announcement');
+      
+      // Dynamically set body padding based on announcement bar height
+      const announcementHeight = stickyHeaders.offsetHeight;
+      document.documentElement.style.setProperty('--announcement-bar-height', announcementHeight + 'px');
+      document.body.style.paddingTop = announcementHeight + 'px';
+    }
+    
+    // Get all countdown elements
+    const daysElement = document.getElementById('js-clock-days');
+    const hoursElement = document.getElementById('js-clock-hours');
+    const minutesElement = document.getElementById('js-clock-minutes');
+    const secondsElement = document.getElementById('js-clock-seconds');
+    
+    // Only run countdown if the elements exist
+    if (hoursElement && minutesElement && secondsElement) {
+      // Initial values from the section settings
+      let days = parseInt('{{ section.settings.countdown_days | default: 0 }}');
+      let hours = parseInt('{{ section.settings.countdown_hours | default: 2 }}');
+      let minutes = parseInt('{{ section.settings.countdown_minutes | default: 20 }}');
+      let seconds = parseInt('{{ section.settings.countdown_seconds | default: 7 }}');
+      
+      // Update the countdown every second
+      const countdownInterval = setInterval(function() {
+        seconds--;
+        
+        if (seconds < 0) {
+          seconds = 59;
+          minutes--;
+          
+          if (minutes < 0) {
+            minutes = 59;
+            hours--;
+            
+            if (hours < 0) {
+              hours = 23;
+              days--;
+              
+              if (days < 0) {
+                // Reset to values from settings when countdown reaches zero
+                days = parseInt('{{ section.settings.countdown_days | default: 0 }}');
+                hours = parseInt('{{ section.settings.countdown_hours | default: 2 }}');
+                minutes = parseInt('{{ section.settings.countdown_minutes | default: 20 }}');
+                seconds = parseInt('{{ section.settings.countdown_seconds | default: 7 }}');
+              }
+            }
+          }
+        }
+        
+        // Update the display with leading zeros
+        if (daysElement) {
+          daysElement.textContent = String(days).padStart(2, '0');
+        }
+        hoursElement.textContent = String(hours).padStart(2, '0');
+        minutesElement.textContent = String(minutes).padStart(2, '0');
+        secondsElement.textContent = String(seconds).padStart(2, '0');
+      }, 1000);
+    }
+  });
+</script>
+{% else %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle sticky announcement bar positioning even without countdown
+    const stickyHeaders = document.querySelector('.sticky-headers');
+    if (stickyHeaders) {
+      // Add class to body for padding
+      document.body.classList.add('has-sticky-announcement');
+      
+      // Dynamically set body padding based on announcement bar height
+      const announcementHeight = stickyHeaders.offsetHeight;
+      document.documentElement.style.setProperty('--announcement-bar-height', announcementHeight + 'px');
+      document.body.style.paddingTop = announcementHeight + 'px';
+    }
+  });
+</script>
+{% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "custom Announcement Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement Bar Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_font_size",
+      "label": "Font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "lower_font_size",
+      "label": "Lower bar font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_lower_font_size",
+      "label": "Lower bar font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "900",
+          "label": "Bold"
+        }
+      ],
+      "default": "900"
+    },
+    {
+      "type": "header",
+      "content": "Top Bar"
+    },
+    {
+      "type": "color",
+      "id": "top_bar_background",
+      "label": "Top bar background color",
+      "default": "#c1121f"
+    },
+    {
+      "type": "color",
+      "id": "top_bar_text_color",
+      "label": "Top bar text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_emoji_left",
+      "label": "Left emoji",
+      "default": "🏷️"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_text",
+      "label": "Top bar text",
+      "default": "EXCLUSIVE OFFER WITH FREE GIFTS TODAY!"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_emoji_right",
+      "label": "Right emoji",
+      "default": "🎁"
+    },
+    {
+      "type": "header",
+      "content": "Main Bar"
+    },
+    {
+      "type": "color",
+      "id": "bottom_bar_background",
+      "label": "Main bar background color",
+      "default": "#2a2a72"
+    },
+    {
+      "type": "color",
+      "id": "special_text_color",
+      "label": "Special text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "special_text",
+      "label": "Special text",
+      "default": "🌱 SPRING SPECIAL ☀️"
+    },
+    {
+      "type": "color",
+      "id": "discount_background",
+      "label": "Discount background",
+      "default": "#c1121f"
+    },
+    {
+      "type": "color",
+      "id": "discount_text_color",
+      "label": "Discount text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "discount_text",
+      "label": "Discount text",
+      "default": "Up to 58% Off"
+    },
+    {
+      "type": "header",
+      "content": "Countdown Timer"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_countdown_js",
+      "label": "Enable live countdown",
+      "default": true,
+      "info": "Timer will count down in real-time when enabled"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_days",
+      "label": "Show days countdown",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "countdown_days",
+      "label": "Days",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "countdown_hours",
+      "label": "Hours",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "countdown_minutes",
+      "label": "Minutes",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "countdown_seconds",
+      "label": "Seconds",
+      "default": 7
+    },
+    {
+      "type": "text",
+      "id": "days_label",
+      "label": "Days label",
+      "default": "Days"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours label",
+      "default": "Hrs"
+    },
+    {
+      "type": "text",
+      "id": "minutes_label",
+      "label": "Minutes label",
+      "default": "Min"
+    },
+    {
+      "type": "text",
+      "id": "seconds_label",
+      "label": "Seconds label",
+      "default": "Sec"
+    },
+    {
+      "type": "color",
+      "id": "timer_separator_color",
+      "label": "Timer separator color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Gift Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gift_image",
+      "label": "Show gift image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "gift_image",
+      "label": "Gift image"
+    },
+    {
+      "type": "header",
+      "content": "Lowest Price Check"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_lowest_price",
+      "label": "Show lowest price bar",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "price_check_background",
+      "label": "Price check background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "price_check_text_color",
+      "label": "Price check text color",
+      "default": "#333333"
+    },
+    {
+      "type": "image_picker",
+      "id": "price_check_icon",
+      "label": "Price check icon"
+    },
+    {
+      "type": "text",
+      "id": "price_check_text",
+      "label": "Price check text",
+      "default": "Verified Lowest Price of the Year. Shop Now!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom Announcement Bar",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

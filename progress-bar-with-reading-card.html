@@ -1,11 +1,6 @@
 <div class="learning-card-wrapper-unique">
     <div class="learning-card-unique">
-        <div class="card-header-unique">
-            <h2>What You Will Learn:</h2>
-        </div>
-        
-        <div class="progress-section-unique">
-            <div class="progress-circle-container-unique">
+         <div class="progress-circle-container-unique">
                 <div class="percent-unique" id="progressPercent-unique">0%</div>
                 <svg class="progress-circle-background-unique" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
                     <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
@@ -14,30 +9,7 @@
                     <path id="progressPath-unique" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
                 </svg>
             </div>
-            <div class="read-time-unique">
-                <div class="read-time-label-unique">Estimated<br>Read Time</div>
-                <div class="read-time-value-unique"><span class="read-time-number-unique">5</span> Minutes</div>
-            </div>
-        </div>
 
-        <div class="card-body-unique">
-            <div class="list-item-unique">
-                <div class="icon-unique icon-check-unique"></div>
-                <div class="list-item-text-unique">Benefits of a Quality Lion's Mane</div>
-            </div>
-            <div class="list-item-unique">
-                <div class="icon-unique icon-check-unique"></div>
-                <div class="list-item-text-unique">What To Look For In A Lion's Mane Supplement</div>
-            </div>
-            <div class="list-item-unique">
-                <div class="icon-unique icon-cross-unique"></div>
-                <div class="list-item-text-unique">What Ingredients To Avoid</div>
-            </div>
-            <div class="list-item-unique">
-                <div class="icon-unique icon-check-unique"></div>
-                <div class="list-item-text-unique">Top 5 Lion's Mane Supplements</div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -49,15 +21,7 @@
     z-index: 9999;
 }
 
-.learning-card-unique {
-    width: 280px;
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-}
+
 
 .learning-card-unique .card-header-unique {
     background: linear-gradient(135deg, #5B8FD8 0%, #4A7BC8 100%);
@@ -73,18 +37,11 @@
     letter-spacing: 0.3px;
 }
 
-.learning-card-unique .progress-section-unique {
-    padding: 24px 20px;
-    background: white;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
 
 .learning-card-unique .progress-circle-container-unique {
     position: relative;
-    width: 85px;
-    height: 85px;
+    width: 48px;
+    height: 48px;
     flex-shrink: 0;
 }
 
@@ -96,6 +53,8 @@
     height: 100%;
     transform: rotate(-90deg);
     overflow:visible;
+    border-radius: 50%;
+    background-color: #fff;
 }
 
 .learning-card-unique .progress-circle-container-unique path {
@@ -118,10 +77,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 22px;
+    font-size: 17px;
     font-weight: 700;
     color: #5B8FD8;
     z-index: 10;
+    background-color: #fff;
+    border-radius: 50%;
 }
 
 .learning-card-unique .read-time-unique {
