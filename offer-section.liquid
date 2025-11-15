@@ -1,0 +1,471 @@
+<div id="offer-section1" class="offer-wrapper {{ section.settings.custom-class }}">
+  <div class="offer-row">
+    {% if section.settings.label_txt != blank %}
+      <div class="new_offer_label">{{ section.settings.label_txt }}</div>
+    {% endif %}
+    {% if section.settings.vertical_alignment != blank %}
+      <div class="offer-tag {{ section.settings.vertical_alignment }}">
+        <div class="offer-tag-row">
+          {% if section.settings.custom_image != blank %}
+            <div class="offer-tag-icon">
+              <img
+                src="{{ section.settings.custom_image | img_url:'small' }}"
+                alt="{{ section.settings.custom_image.alt }}"
+                width=""
+                height=""
+              >
+            </div>
+          {% endif %}
+          {% if section.settings.sub_title != blank %}
+            <div class="offer-tag-text">
+              {{ section.settings.sub_title }}
+            </div>
+          {% endif %}
+          {% if section.settings.custom_image2 != blank %}
+            <div class="offer-tag-icon">
+              <img
+                src="{{ section.settings.custom_image2 | img_url:'small' }}"
+                alt="{{ section.settings.custom_image2.alt }}"
+                width=""
+                height=""
+              >
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    <div class="offer-inner offerbox-new">
+      {% if section.settings.image != blank %}
+        <div class="offer-img-col">
+          <img
+            src="{{ section.settings.image | img_url:'master' }}"
+            alt="{{ section.settings.image.alt }}"
+            width=""
+            height=""
+          >
+        </div>
+      {% endif %}
+      <div class="offer-content-col">
+        {% if section.settings.heading != blank %}
+          {% if page.handle == 'life-changing-2plus1'  or template.suffix == 'spanish-2-plus-1' %}
+            {% assign offer_p = all_products['visionfull-mouth-tape-2plus1-offer'] %}
+            <a
+              href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1"
+              class="free-shipping-wrap"
+              style="text-decoration:none"
+            >
+              <span>{{ section.settings.heading }}</span>
+            </a>
+
+          {% elsif template.suffix == 'oth2-life-changing-2plus1' %}
+            {% assign offer_p = all_products['visionfull-mouth-tape-2-1-offer-other-90-days-supply'] %}
+            <a
+              href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1"
+              class="free-shipping-wrap"
+              style="text-decoration:none"
+            >
+              <span>{{ section.settings.heading }}</span>
+            </a>
+          {% else %}
+            <div class="free-shipping-wrap">
+              <span>{{ section.settings.heading }}</span>
+            </div>
+          {% endif %}
+        {% endif %}
+        {% if section.settings.sub_heading != blank %}
+          <div class="offer-title-wrap">
+            <h2 class="offer-title">
+              {{ section.settings.sub_heading }}
+            </h2>
+          </div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="offer-description">{{ section.settings.description }}</div>
+        {% endif %}
+        <ul class="offer-benefits">
+          {% for block in section.blocks %}
+            {% if block.settings.heading != blank %}
+              <li>
+                <span class="icon">{% render 'right_icon' %}</span>{{ block.settings.heading }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        <div class="offer-btn-wrap">
+          {% if page.handle == 'life-changing-2plus1' or template.suffix == 'spanish-2-plus-1' %}
+            {% assign offer_p = all_products['visionfull-mouth-tape-2plus1-offer'] %}
+            <a href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1" class="offer-btn2">
+              {{ section.settings.button_label }}
+              <span class="btn-icon">{% render 'button_icon' %}</span>
+            </a>
+          {% elsif template.suffix == 'oth2-life-changing-2plus1' %}
+            {% assign offer_p = all_products['visionfull-mouth-tape-2-1-offer-other-90-days-supply'] %}
+            <a href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1" class="offer-btn2">
+              {{ section.settings.button_label }}
+              <span class="btn-icon">{% render 'button_icon' %}</span>
+            </a>
+          {% else %}
+            {% if section.settings.button_label != blank %}
+              
+             <a href="{{ section.settings.link | default:'#' }}" class="offer-btn-new">
+                {{ section.settings.button_label }}
+                <span class="btn-icon">{% render 'button_icon' %}</span>
+              </a>
+            {% endif %}
+          {% endif %}
+
+          {% if page.handle == 'life-changing-2plus1' or template.suffix == 'spanish-2-plus-1' %}
+            {% assign offer_p = all_products['visionfull-mouth-tape-2plus1-offer'] %}
+            <a href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1" class="deal-timer-wrap">
+              <span class="timer-text"><strong>{{ section.settings.timer_text }}</strong></span>
+              <div class="timer" id="timer">
+                <div class="js-clock-dayss clock-elem" style="display: none;">00</div>
+                <div class="js-clock-hourss clock-elem">00</div>
+                :
+                <div class="js-clock-minutess clock-elem">00</div>
+                :
+                <div class="js-clock-secondss clock-elem">00</div>
+              </div>
+            </a>
+          {% elsif template.suffix == 'oth2-life-changing-2plus1' %}
+            {% assign offer_p = all_products['visionfull-mouth-tape-2-1-offer-other-90-days-supply'] %} 
+            <a href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1" class="deal-timer-wrap">
+              <span class="timer-text"><strong>{{ section.settings.timer_text }}</strong></span>
+              <div class="timer" id="timer">
+                <div class="js-clock-dayss clock-elem" style="display: none;">00</div>
+                <div class="js-clock-hourss clock-elem">00</div>
+                :
+                <div class="js-clock-minutess clock-elem">00</div>
+                :
+                <div class="js-clock-secondss clock-elem">00</div>
+              </div>
+            </a>
+          {% else %}
+            <div class="deal-timer-wrap">
+              <span class="timer-text">{{ section.settings.timer_text }}</span>
+              <div class="timer" id="timer">
+                <div class="js-clock-dayss clock-elem" style="display: none;">00</div>
+                <div class="js-clock-hourss clock-elem">00</div>
+                :
+                <div class="js-clock-minutess clock-elem">00</div>
+                :
+                <div class="js-clock-secondss clock-elem">00</div>
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="offer-info-wrap">
+
+            {% if page.handle == 'life-changing-2plus1' or template.suffix == 'spanish-2-plus-1' %}
+              {% assign offer_p = all_products['visionfull-mouth-tape-2plus1-offer'] %}
+              <a href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1"  class="risk-col" style="text-decoration:none">
+                {{ section.settings.sell_title }}
+                <span class="risk-type">{{ section.settings.bold_text }}</span>
+              </a>
+
+              {% elsif template.suffix == 'oth2-life-changing-2plus1' %}
+                {% assign offer_p = all_products['visionfull-mouth-tape-2-1-offer-other-90-days-supply'] %} 
+                <a href="/cart/{{ offer_p.selected_or_first_available_variant.id }}:1"  class="risk-col" style="text-decoration:none">
+                  {{ section.settings.sell_title }}
+                  <span class="risk-type">{{ section.settings.bold_text }}</span>
+                </a>
+              {% else %}
+                <div class="risk-col">
+                  {{ section.settings.sell_title }}
+                  <span class="risk-type">{{ section.settings.bold_text }}</span>
+                </div>
+                
+              {% endif %}
+
+              {% if section.settings.paragraph != blank %}
+                <div class="line-divider">|</div>
+                <div class="shipping-col">{{ section.settings.paragraph }}</div>
+              {% endif %}
+
+
+
+          </div>
+          {% if section.settings.sub_content != blank %}
+            <p style="text-align:center;    font-size: 13px;line-height: 1.2;"> {{ section.settings.sub_content }}</p> 
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // $(document).ready(function() {
+  //   // advotorial offer section timer js
+  // var countdowns = document.querySelectorAll('.timer');
+
+  // countdowns.forEach(function(countdown) {
+  //   setInterval(function () {
+  //     var toDate = new Date();
+  //     var tomorrow = new Date();
+  //     tomorrow.setHours(24, 0, 0, 0);
+  //     var diffMS = tomorrow.getTime() / 1000 - toDate.getTime() / 1000;
+  //     var diffHr = Math.floor(diffMS / 3600);
+  //     diffMS = diffMS - diffHr * 3600;
+  //     var diffMi = Math.floor(diffMS / 60);
+  //     diffMS = diffMS - diffMi * 60;
+  //     var diffS = Math.floor(diffMS);
+  //     var result = diffHr < 10 ? "0" + diffHr : diffHr;
+  //     result += ":" + (diffMi < 10 ? "0" + diffMi : diffMi);
+  //     result += ":" + (diffS < 10 ? "0" + diffS : diffS);
+  //     countdown.innerHTML = result;
+  //   }, 1000);
+  // });
+  // });
+
+  $(document).ready(function () {
+    // announcement bar timer js
+    (function () {
+      // Function to get the next midnight time
+      function getNextMidnight() {
+        var midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+        return midnight;
+      }
+
+      var deadline = getNextMidnight();
+
+      function pad(num, size) {
+        var s = '0' + num;
+        return s.substr(s.length - size);
+      }
+
+      function getTimeRemaining(endtime) {
+        var total = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((total / 1000) % 60);
+        var minutes = Math.floor((total / 1000 / 60) % 60);
+        var hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+        return { total, days, hours, minutes, seconds };
+      }
+
+      function clock(id, endtime) {
+        var clockDiv = document.getElementsByClassName(id);
+        var daysElem = document.getElementsByClassName(id + '-dayss');
+        var hoursElem = document.getElementsByClassName(id + '-hourss');
+        var minutesElem = document.getElementsByClassName(id + '-minutess');
+        var secondsElem = document.getElementsByClassName(id + '-secondss');
+
+        var timeinterval = setInterval(function () {
+          var time = getTimeRemaining(endtime);
+
+          if (time.total <= 0) {
+            clearInterval(timeinterval);
+            clockDiv.style.display = 'none'; // hide the timer
+          } else {
+            for (var i = 0; i < daysElem.length; i++) {
+              daysElem[i].textContent = pad(time.days, 2);
+            }
+            for (var i = 0; i < hoursElem.length; i++) {
+              hoursElem[i].textContent = pad(time.hours, 2);
+            }
+            for (var i = 0; i < minutesElem.length; i++) {
+              minutesElem[i].textContent = pad(time.minutes, 2);
+            }
+            for (var i = 0; i < secondsElem.length; i++) {
+              secondsElem[i].textContent = pad(time.seconds, 2);
+            }
+          }
+        }, 1000);
+      }
+
+      clock('js-clock', deadline);
+    })();
+  });
+</script>
+
+<style>
+  .offer-wrapper {
+    position: relative;
+    
+  }
+  .new_offer_label {
+    position: absolute;
+    top: -22px;
+    z-index: 2;
+    background: #2a2552;
+    color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 16px;
+    min-width: 250px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  #offer-section1{
+    padding-top: 5rem!important;
+        padding-bottom: 5rem;
+    background-color:#FDFDE7;
+  }
+  @media screen and (max-width: 767px) {
+    #offer-section1 {
+        padding-top: 2rem!important;
+        padding-bottom: 2rem;
+    }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Offer Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Special Offer"
+    },
+    {
+      "type": "textarea",
+      "id": "label_txt",
+      "label": "Label Text"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "special-offer",
+          "label": "Special Offer"
+        },
+        {
+          "value": "offer-ending",
+          "label": "Offer ending"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image2",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "custom-class",
+      "label": "Add Custom Class"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Free Shipping with your order"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_heading",
+      "label": "SubHeading",
+      "default": "<span>Up to 50% Off</span> For a limited time only!"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": " Redeem Offer"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Timer"
+    },
+    {
+      "type": "text",
+      "id": "timer_text",
+      "label": "Header Label",
+      "default": "Deal Ending in:"
+    },
+    {
+      "type": "text",
+      "id": "timer_hrs",
+      "label": "Timer Hours",
+      "default": "21:31:16"
+    },
+    {
+      "type": "text",
+      "id": "sell_title",
+      "label": "Sub Title",
+      "default": "Sell-Out-Risk:"
+    },
+    {
+      "type": "text",
+      "id": "bold_text",
+      "label": "Sub Text Blod",
+      "default": "High"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "sub_content",
+      "label": "Sub Title",
+      "default": "Try it today with a 30-Day Money Back Guarantee!"
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": " 30-Day money back"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Section"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

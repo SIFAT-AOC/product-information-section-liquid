@@ -1,0 +1,148 @@
+<div class="sticky-bottom-wrap">
+  <div class="page-width">
+    <div class="sticky-bottom-row">
+      <div class="sticky-bottom-btn-wrap">
+        <a href="{{ section.settings.button_url }}"
+          class="sticky-bottom-btn {{ section.settings.button_type }}" onclick="scrollToSection('.section')"
+        >
+          <div class="sticky-btn-left">
+            <span>{{ section.settings.button_text }}</span>
+            {% if section.settings.button_sub_text != blank %}
+              <span class="button-subtext">{{ section.settings.button_sub_text }}</span>
+            {% endif %}
+          </div>
+          <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.99998 9L19 9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13.0001 1.99992L20 8.9999L13 16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div class="sticky-bottom-icon-wrap">
+          {% if section.settings.free_shipping_img != blank %}
+        <div class="sticky-icon-col">
+            <div class="bottom-icon"><img src="{{ section.settings.free_shipping_img | img_url:'master' }}"></div>
+          {% if section.settings.free_shipping_text != blank %}
+            <div class="bottom-text">{{ section.settings.free_shipping_text }}</div>
+          {% endif %}
+        </div>
+          {% endif %}
+          {% if section.settings.days_shipping_img != blank %}
+        <div class="sticky-icon-col">
+            <div class="bottom-icon"><img src="{{ section.settings.days_shipping_img | img_url:'master'}}"></div>
+          {% if section.settings.days_shipping_text != blank %}
+            <div class="bottom-text">{{ section.settings.days_shipping_text }}</div>
+          {% endif %}
+        </div>
+          {% endif %}
+      </div>
+        {% if section.settings.order-by-image != blank %}
+      <div class="dynamic-date">
+        <div class="sticky-icon-col">
+          <div class="bottom-icon">
+            <img src="{{ section.settings.order-by-image | img_url:'master'}}">
+          </div>
+          <div class="bottom-text">Order by <span id="dynamicDate" class="dynamicDate"></span> for Guaranteed FREE Mouth Tape</div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function scrollToSection(className) {
+    const element = document.querySelector('.custom-variant-selector');
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    } else {
+      console.error("element not found")
+    }
+  }
+</script>
+<script>
+  window.addEventListener("scroll", function () {
+  var scrollPosition = window.scrollY;
+  var stickySection = document.querySelector(".sticky-bottom-wrap");
+
+  if (scrollPosition >= 300) {
+    stickySection.classList.add("sticky");
+  } else {
+    stickySection.classList.remove("sticky");
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Sticky Bottom With Link",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "button_type",
+      "label": "Button Type",
+      "options": [
+        {
+          "value": "offer-button",
+          "label": "Offer Button"
+        },
+        {
+          "value": "quantity-button",
+          "label": "Quantity Button"
+        }
+      ],
+      "default": "quantity-button"
+    },
+    {
+           "type": "url",
+           "id": "button_url",
+           "label": "Button Url"
+         },
+    {
+           "type": "text",
+           "id": "button_text",
+           "label": "Button"
+         },
+    {
+          "type": "text",
+           "id": "button_sub_text",
+           "label": "Button Sub Text"
+         },
+    {
+           "type": "image_picker",
+           "id": "free_shipping_img",
+           "label": "Image"
+         },
+        {
+           "type": "text",
+           "id": "free_shipping_text",
+           "label": "Text"
+         },
+         {
+           "type": "image_picker",
+           "id": "days_shipping_img",
+           "label": "Image"
+         },
+        {
+           "type": "text",
+           "id": "days_shipping_text",
+           "label": "Text"
+         },
+         {
+           "type": "image_picker",
+           "id": "order-by-image",
+           "label": "Order By Image"
+         }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Sticky Bottom With Link"
+    }
+  ]
+}
+{% endschema %}
